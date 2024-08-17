@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #15202B;
+            background-color: #000;
+            
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #FFFFFF;
+            text-align: center;
+        }
+        .notification {
+            background-color: #0e161d;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #38444D;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .notification img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .notification .content {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .notification .content .username {
+            font-weight: bold;
+            color: #1DA1F2;
+        }
+        .notification .content .action {
+            color: #8899A6
+        }
+
+        #action-text {
+            color: whitesmoke;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Notifications</h1>
+        <div id="notifications"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('/notifications', {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                const notificationsContainer = document.getElementById('notifications');
+                data.forEach(notification => {
+
+
+                    if(notification.from._id.toString() !== notification.to.toString())
+                {
+              
+                
+                    const notificationElement = document.createElement('div');
+                    notificationElement.classList.add('notification');
+
+                    if(notification.type==="comment")
+                   {
+                    notificationElement.setAttribute('not_id', notification.pid);
+                   }
+  
+                    else{
+                        notificationElement.setAttribute('not_id',"0");
+                    }
+                    const userImage = notification.from.profileImg ? notification.from.profileImg : 'https://cdn-icons-png.flaticon.com/512/149/149071.png'; // Fallback to default image
+                    
+                    notificationElement.innerHTML = `
+                        <img src="${userImage}" alt="${notification.from.username}">
+                        <div class="content">
+                            <span class="username">${notification.from.username}</span> 
+                            <span id="action-text" > ${getActionText(notification.type)} </span>
+                        </div>
+                    `;
+                    notificationsContainer.appendChild(notificationElement);
+                }
+
+
+                });
+            })
+    
+            .catch(error => {
+                console.error('Error fetching notifications:', error);
+            });
+        });
+
+        function getActionText(type) {
+            switch(type) {
+                case 'like':
+                    return 'liked your post.';
+                case 'comment':
+                    return 'commented on your post.';
+                case 'follow':
+                    return 'followed you.';
+                default:
+                    return '';
+            }
+        }
+
+
+ document.addEventListener("DOMContentLoaded", function () {
+  document.querySelector("#notifications").addEventListener("click", function (event) {
+      
+
+    
+        const postId = event.target.closest(".notification").getAttribute("not_id");
+
+        if( postId === "0")
+        {    
+            
+           
+            console.log("Not a Comment")
+        }
+
+        else{
+
+            console.log(postId);
+
+window.location.href = `/posts/${postId}`; 
+        }
+     
+      
+    });
+
+});
+    </script>
+</body>
+</html>

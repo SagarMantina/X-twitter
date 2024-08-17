@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter join</title>
+   <style>
+    body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo {
+    font-size: 150px;
+    font-weight: bold;
+    margin-right: 50px;
+}
+
+.logo span {
+    display: inline-block;
+    color: #fff;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+h1 {
+    margin: 0 0 20px;
+    font-size: 32px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input {
+    width: 340px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 0.1px solid #ffffff85; /* Added white border */
+  
+    background-color: #000; /* Set background to black */
+    color: #ffffffc5;
+    font-size: 16px;
+}
+
+form button {
+        margin: 20px 0;
+        width: 360px;
+        padding: 15px;
+        background-color: #1da1f2;
+        border: none;
+        border-radius: 20px;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+    }
+.sign-in {
+   
+    margin-top: 20px;
+    padding: 10px; /* Added padding */
+ 
+}
+
+.sign-in h2 {
+    font-size: 20px; /* Increased font size */
+    margin: 0 0 10px; /* Added margin */
+}
+
+.sign-in a {
+    font-size: medium;
+    width: 300px;
+    text-align: center;
+    display: inline-block; /* Ensures padding applies correctly */
+    padding: 10px 20px; /* Increased padding */
+    border: 1px solid #1da1f2; /* White border changed to match color theme */
+    border-radius: 50px;
+    color: #1da1f2;
+    text-decoration: none;
+    font-size: 18px; /* Increased font size */
+}
+
+
+.error {
+ position: absolute;
+ /* transform: translateX(-50%); */
+ top:20px;
+ left: 50%;
+ font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+ width: 320px;
+ padding: 12px;
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ background: #EF665B;
+ border-radius: 8px;
+ box-shadow: 0px 0px 5px -3px #111;
+}
+
+.error__icon {
+ width: 20px;
+ height: 20px;
+ transform: translateY(-2px);
+ margin-right: 8px;
+}
+
+.error__icon path {
+ fill: #fff;
+}
+
+.error__title {
+ font-weight: 500;
+ font-size: 14px;
+ color: #fff;
+}
+
+.error__close {
+ width: 20px;
+ height: 20px;
+ cursor: pointer;
+ margin-left: auto;
+}
+
+.error__close path {
+ fill: #fff;
+}
+   </style>
+</head>
+<body>
+
+    
+<div class="error" style="display: none;">
+    <div class="error__icon" >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none"><path fill="#393a37" d="m13 13h-2v-6h2zm0 4h-2v-2h2zm-1-15c-1.3132 0-2.61358.25866-3.82683.7612-1.21326.50255-2.31565 1.23915-3.24424 2.16773-1.87536 1.87537-2.92893 4.41891-2.92893 7.07107 0 2.6522 1.05357 5.1957 2.92893 7.0711.92859.9286 2.03098 1.6651 3.24424 2.1677 1.21325.5025 2.51363.7612 3.82683.7612 2.6522 0 5.1957-1.0536 7.0711-2.9289 1.8753-1.8754 2.9289-4.4189 2.9289-7.0711 0-1.3132-.2587-2.61358-.7612-3.82683-.5026-1.21326-1.2391-2.31565-2.1677-3.24424-.9286-.92858-2.031-1.66518-3.2443-2.16773-1.2132-.50254-2.5136-.7612-3.8268-.7612z"></path></svg>
+    </div>
+    <div class="error__title">Something Went Wrong</div>
+    <div class="error__close"><svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 20 20" height="20"><path fill="#393a37" d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z"></path></svg></div>
+</div>
+    <div class="container">
+
+        
+        <div class="logo">
+            <span>X</span>
+        </div>
+        <div class="form-container">
+            <h1>Join today.</h1>
+            <form action="/signup" method="POST">
+                <input type="text" name="fullname" placeholder="Full Name" required>
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Sign up</button>
+            </form>
+            <div class="sign-in">
+                <h2>Already have an account?</h2>
+                <a href="/login">Log in</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelector("form").addEventListener("submit", async (event) => {
+        event.preventDefault(); // Prevent form from submitting the default way
+
+        const form = event.target; // Fixed typo here
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+            const response = await fetch("/signup", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                console.log("Successful registration");
+                window.location.href = "/login";
+            } else {
+                const error = await response.json();
+                console.log(error);
+                document.querySelector(".error__title").textContent = error.error;
+                document.querySelector(".error").style.display = "block";
+
+                setTimeout(() => {
+                    document.querySelector(".error").style.display = "none";
+                }, 4000);
+            }
+        } catch (error) {
+            console.log(error);
+            document.querySelector(".error__title").textContent = "Internal Server Error";
+            document.querySelector(".error").style.display = "block";
+
+            setTimeout(() => {
+                document.querySelector(".error").style.display = "none";
+            }, 4000);
+        }
+    });
+});
+
+    </script>
+</body>
+</html>

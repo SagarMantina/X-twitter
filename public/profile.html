@@ -1,0 +1,1580 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Profile Page</title>
+   
+    <!-- <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        .left-sidebar, .right-sidebar {
+            width: 20%;
+            padding: 20px;
+        }
+
+        .left-sidebar {
+            height: 100vh;
+            border-right: 1px solid #444;
+        }
+
+        .right-sidebar {
+            height: 100vh;
+            border-left: 1px solid #444;
+        }
+
+        .left-nav a {
+            display: block;
+            margin: 10px 0;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        .profile-main {
+            width: 60%;
+            padding: 20px;
+        }
+
+        .profile-header {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+      
+
+        .profile-info {
+            display: flex;
+            align-items: center;
+            margin-top: -50px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #444;
+        }
+
+        .profile-pic {
+            display: block;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid #000;
+            margin-right: 20px;
+        }
+
+        .profile-details {
+            flex-grow: 1;
+        }
+        .followingprofile-btn {
+            background-color: rgb(41, 33, 33);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        .edit-profile-btn,.followprofile-btn {
+            background-color: #1da1f2;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .profile-tabs {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+
+        .profile-tabs .tab {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .tweets .tweet {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tweets .tweet img {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .tweets .tweet-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .tweets .tweet-actions span {
+            cursor: pointer;
+        }
+
+        .who-to-follow {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .who-to-follow h4 {
+            margin-top: 0;
+        }
+
+        .who-to-follow ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .who-to-follow li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .who-to-follow img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .who-to-follow button {
+            background-color: #1da1f2;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+          
+        .sp{
+           cursor: pointer;
+         margin-right: 10px;
+       }
+
+       .update-profile {
+          width: 35%;
+          position: fixed;
+           top:40%;
+           left: 50%;
+           transform: translate(-50%,-50%);
+           background-color: #1a1a1a;
+           padding: 20px;
+           border-radius: 10px;
+           margin-bottom: 20px;
+       }
+
+
+       .update-profile input{
+           height: 4vh;
+           width: 100%;
+           margin-bottom: 10px;
+           display: flex;
+           flex-direction: column;
+           border: whitesmoke 1px solid;
+           border-radius: 5%;
+           background-color: #1a1a1a;
+       }
+
+     .profile-banner{
+        width: 100%;
+        height: 20%;
+        display: block;
+        margin-bottom: 5px;
+     }
+
+      
+    </style> -->
+
+<style>
+       body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        .left-sidebar, .right-sidebar {
+            width: 20%;
+            padding: 20px;
+        }
+
+        .left-sidebar {
+            height: 100vh;
+            border-right: 1px solid #444;
+        }
+
+        .right-sidebar {
+            height: 100vh;
+            border-left: 1px solid #444;
+        }
+
+        .left-nav a {
+            display: block;
+            margin: 10px 0;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        .profile-main {
+            width: 60%;
+            padding: 20px;
+        }
+
+        .profile-header {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .profile-banner-container {
+            position: relative;
+        }
+        .profile-banner {
+            margin-bottom: 20vh;
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .edit-banner-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #D9D9D9;
+            padding: 5px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .profile-info {
+            display: flex;
+            align-items: center;
+            margin-top: -50px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #444;
+            position: relative;
+        }
+
+        .profile-pic {
+            margin-top: 2vh;
+            display: block;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid #000;
+            margin-right: 20px;
+            object-fit: cover;
+        }
+
+        .edit-pic-icon {
+            position: absolute;
+            bottom: 40px;
+            left: 8vh;
+            bottom: 8vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #D9D9D9;
+            padding: 5px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .profile-details {
+            margin-top: 3vh;
+            flex-grow: 1;
+        }
+
+        .edit-profile-btn, .followprofile-btn {
+            background-color: #1da1f2;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .followingprofile-btn {
+            background-color: rgb(41, 33, 33);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .edit-profile-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            background-color: #1DA1F2;
+            border: none;
+            color: #D9D9D9;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .profile-tabs {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+
+        .profile-tabs .tab {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .tweets .tweet {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tweets .tweet img {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .tweets .tweet-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .tweets .tweet-actions span {
+            cursor: pointer;
+        }
+
+        .who-to-follow {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .who-to-follow h4 {
+            margin-top: 0;
+        }
+
+        .who-to-follow ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .who-to-follow li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .who-to-follow img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .who-to-follow button {
+            background-color: #1da1f2;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .sp {
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .update-profile {
+            width: 35%;
+            position: fixed;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .update-profile input {
+            height: 4vh;
+            width: 100%;
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            border: whitesmoke 1px solid;
+            border-radius: 5%;
+            background-color: #1a1a1a;
+        }
+
+        .profile-banner {
+            width: 100%;
+            height: 20%;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+
+
+        
+.like-button, .comment-button {
+    background: none;
+    border: none;
+    color: #657786;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.like-button .fa-heart, .comment-button .fa-comment {
+    margin-right: 5px;
+}
+
+.like-button .fa-heart {
+    color: white;
+    border: 1px solid #000;
+    border-radius: 50%;
+    padding: 2px;
+}
+
+.like-button.liked .fa-heart {
+    color: #e0245e;
+    background-color: #000;
+}
+
+.like-button:hover .fa-heart {
+    color: #e0245e;
+}
+
+.comment-button .fa-comment {
+    color: #657786;
+}
+
+.comment-button:hover .fa-comment {
+    color: #1da1f2;
+}
+
+.comment-box {
+    position: fixed;
+    width:  50vh;
+    height: 30vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: lightseagreen;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.comment-box-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-box-content .close-btn {
+    
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+.comment-box-content .tweet-content {
+    margin-bottom: 10px;
+}
+
+#comment-input {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+#comment-submit {
+    align-self: flex-end;
+}
+
+
+.up {
+    border-radius: 50% !important;
+    width: 40px !important;
+    height: 40px !important;
+    margin-right: 15px !important;
+    margin-bottom: 5px !important;
+    vertical-align: middle !important;
+    display: inline !important;
+}
+
+</style>
+
+</head>
+<body>
+
+    <div class="update-profile" style="display: none;" >
+        <h1>Update Profile</h1>
+        <form id="updateprofile">
+            <input type="text" id="fullname" placeholder="Full Name">
+            <input type="text" id="username" placeholder="Username">
+            <input type="text" id="bio" placeholder="Bio">
+
+            <button type="submit">Update</button>
+        </form>
+    </div>
+    <div class="container">
+        <aside class="left-sidebar">
+            <nav class="left-nav">
+                <a href="/" class="logo">X</a>
+                <a href="/home">Home</a>
+                <a href="/notifications">Notifications</a>
+                <a href="/profile">Profile</a>
+            </nav>
+        </aside>
+     
+        <main class="profile-main">
+        <div class="profile-header">
+            <div class="profile-banner-container"  id="profileBanner">
+                <div class="profile-banner-container">
+                    <img src="" alt="Profile Banner" class="profile-banner" id="profile-banner">
+                </div>
+               
+
+                <div class="edit-banner-icon" id="editBannerIcon">&#9998;</div>
+                <input type="file" id="bannerInput" style="display: none;" accept="image/*">
+            </div>
+            <div class="profile-info">
+                <div class="profile-pic-container">
+                    <img src="" alt="Profile Picture" class="profile-pic" id="profilePic">
+                    <div class="edit-pic-icon" id="editPicIcon">&#9998;</div>
+                    <input type="file" id="profilePicInput" style="display: none;" accept="image/*">
+                </div>
+                <div class="profile-details">
+                    <h1 id="fullname">fullname</h1>
+                    <p id="username">username</p>
+                    <p id="bio">bio</p>
+                    <p id="doj"></p>
+                </div>
+                <button class="edit-profile-btn">Edit profile</button>
+                <button class="followtoggle-btn" id="ftb">Follow</button>
+            </div>
+            <div class="profile-tabs">
+                <button class="tab" id="posts">Posts</button>
+                <button class="tab" id="likes">Likes</button>
+            </div>
+        </div>
+        <div class="tweets"></div>
+    </main>
+        <aside class="right-sidebar">
+            <div class="who-to-follow">
+                <h4>Who to follow</h4>
+                <ul>
+                    <li>
+                        <img src="profile-pic.jpg" alt="Profile Picture">
+                        <span>Jenny Doe @jennydoe</span>
+                        <button>Follow</button>
+                    </li>
+                    <li>
+                        <img src="profile-pic.jpg" alt="Profile Picture">
+                        <span>John Doe @johndoe</span>
+                        <button>Follow</button>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+
+    <div id="editProfileModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <form id="editProfileForm">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullnameInput" name="fullname" required>
+                <label for="username">Username</label>
+                <input type="text" id="usernameInput" name="username" required>
+                <label for="bio">Bio</label>
+                <textarea id="bioInput" name="bio" rows="3" required></textarea>
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+
+
+
+    <div id="comment-box" class="comment-box" style="display: none;">
+        <div class="comment-box-content">
+            <span class="close-btn" onclick="closeCommentBox()">&times;</span>
+            <div class="tweet-content">
+                <span id="comment-fullname"></span>
+                <span id="comment-username"></span>
+                <p id="comment-text"></p>
+            </div>
+            <textarea placeholder="Tweet your reply" id="comment-input"></textarea>
+            <button id="comment-submit" onclick="submitComment()">Tweet</button>
+        </div>
+    </div>
+</body>
+<script>
+
+// //update profile:-
+// document.addEventListener("DOMContentLoaded", function() {
+
+//     const editProfileBtn = document.querySelector(".edit-profile-btn");
+//     const modal = document.getElementById("editProfileModal");
+//     const closeButton = document.querySelector(".close-button");
+//     const editProfileForm = document.getElementById("editProfileForm");
+
+//     const profilePicInput = document.getElementById("profilePicInput");
+//     const bannerInput = document.getElementById("bannerInput");
+
+//     const profilePic = document.getElementById("profilePic");
+//     const profileBanner = document.getElementById("profileBanner");
+
+//     const editPicIcon = document.getElementById("editPicIcon");
+//     const editBannerIcon = document.getElementById("editBannerIcon");
+
+//     // Function to open the modal
+//     function openModal() {
+//         modal.style.display = "block";
+//     }
+
+//     // Function to close the modal
+//     function closeModal() {
+//         modal.style.display = "none";
+//     }
+
+//     // Event listeners for opening and closing the modal
+//     editProfileBtn.addEventListener("click", openModal);
+//     closeButton.addEventListener("click", closeModal);
+
+//     window.addEventListener("click", function(event) {
+//         if (event.target == modal) {
+//             closeModal();
+//         }
+//     });
+
+//     // Handle profile picture change
+//     editPicIcon.addEventListener("click", function() {
+//         profilePicInput.click();
+//     });
+
+//     profilePicInput.addEventListener("change", function(event) {
+//         const file = event.target.files[0];
+//         if (file) {
+//             const reader = new FileReader();
+//             reader.onload = function(e) {
+//                 profilePic.src = e.target.result;
+//             };
+//             reader.readAsDataURL(file);
+//         }
+//     });
+
+//     // Handle banner change
+//     editBannerIcon.addEventListener("click", function() {
+//         bannerInput.click();
+//     });
+
+//     bannerInput.addEventListener("change", function(event) {
+//         const file = event.target.files[0];
+//         if (file) {
+//             const reader = new FileReader();
+//             reader.onload = function(e) {
+//                 profileBanner.src = e.target.result;
+//             };
+//             reader.readAsDataURL(file);
+//         }
+//     });
+
+//     // Handle form submission
+//     editProfileForm.addEventListener("submit", async function(event) {
+//         event.preventDefault();
+
+//         const formData = new FormData(editProfileForm);
+//         const profileData = {
+//             fullname: formData.get("fullname"),
+//             username: formData.get("username"),
+//             bio: formData.get("bio"),
+//         };
+
+//         const profileImgFile = profilePicInput.files[0];
+//         const coverImgFile = bannerInput.files[0];
+
+//         if (profileImgFile) {
+//             profileData.profileImg = await toBase64(profileImgFile);
+//         }
+
+//         if (coverImgFile) {
+//             profileData.coverImg = await toBase64(coverImgFile);
+//         }
+
+//         try {
+//             const response = await fetch("/update", {
+//                 method: "POST",
+//                 headers: {
+//                     "Content-Type": "application/json",
+//                 },
+//                 body: JSON.stringify(profileData),
+//             });
+
+//             if (response.ok) {
+//                 // Update the profile details on the page
+//                 const data = await response.json();
+//                 document.getElementById("fullname").innerText = data.fullname;
+//                 document.getElementById("username").innerText = `@${data.username}`;
+//                 document.getElementById("bio").innerText = data.bio;
+//                 if (data.profileImg) {
+//                     document.querySelector(".profile-pic").src = data.profileImg;
+//                 }
+//                 if (data.coverImg) {
+//                     document.querySelector(".profile-banner").src = data.coverImg;
+//                 }
+//                 closeModal();
+//             } else {
+//                 console.error("Failed to update profile");
+//             }
+//         } catch (error) {
+//             console.error("Error:", error);
+//         }
+//     });
+
+    
+// });
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const profilePicInput = document.getElementById("profilePicInput");
+    const bannerInput = document.getElementById("bannerInput");
+
+    const profilePic = document.getElementById("profilePic");
+    const profileBanner = document.getElementById("profile-banner");
+
+    const editPicIcon = document.getElementById("editPicIcon");
+    const editBannerIcon = document.getElementById("editBannerIcon");
+
+    // Handle profile picture change
+    editPicIcon.addEventListener("click", function() {
+        profilePicInput.click();
+    });
+
+    profilePicInput.addEventListener("change", async function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                profilePic.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+
+            const imgBase64 = await toBase64(file);
+            const response = await fetch("/update", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    profileImg: imgBase64,
+                }),
+            });
+
+            if (response.ok) {
+                console.log("Profile picture updated successfully");
+            } else {
+                console.error("Failed to update profile picture");
+            }
+        }
+    });
+
+    // Handle banner change
+    editBannerIcon.addEventListener("click", function() {
+        bannerInput.click();
+    });
+
+    bannerInput.addEventListener("change", async function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                profileBanner.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+
+            const imgBase64 = await toBase64(file);
+            const response = await fetch("/update", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    coverImg: imgBase64,
+                }),
+            });
+
+            if (response.ok) {
+                console.log("Banner image updated successfully");
+            } else {
+                console.error("Failed to update banner image");
+            }
+        }
+    });
+
+    async function toBase64(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = (error) => reject(error);
+        });
+    }
+});
+
+
+    //load profile with follow for same user
+document.addEventListener("DOMContentLoaded", async function () {
+    try {
+        // Fetch and display profile data
+        const route = window.location.pathname;
+        const un = route.split("/")[2];
+
+        const response = await fetch(`/profile/${un}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            const createdAt = data.createdAt; // Ensure this matches the JSON response property name
+
+            let dateofcreation = new Date(createdAt);
+            if (isNaN(dateofcreation.getTime())) {
+                console.error("Invalid Date:", createdAt);
+            } else {
+                const options = { year: 'numeric', month: 'long' };
+                const formattedDate = dateofcreation.toLocaleDateString('en-US', options);
+                document.getElementById("doj").innerHTML = `Joined ${formattedDate}`;
+            }
+
+            let username=document.querySelector(".profile-details h1");
+
+          
+            username.textContent = data.fullname;
+
+
+            let info = document.querySelectorAll(".profile-details p");
+              document.querySelector(".profile-details").setAttribute("uid", data._id);
+            info[0].textContent = `@${data.username}`;
+            // info[0].setAttribute("uid", data._id);
+            info[1].textContent = data.bio || "No bio available";
+
+
+
+            if(data.profileImg) {
+                document.querySelector(".profile-pic").src = data.profileImg;
+            }
+            else {
+                document.querySelector(".profile-pic").src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+            }
+            
+
+            if(data.coverImg) {
+                document.querySelector(".profile-banner").src = data.coverImg;
+            }
+            else {
+                
+                document.querySelector(".profile-banner").src = "https://res.cloudinary.com/dqj4jxhba/image/upload/v1720776506/eouowywpqy0dittednr2.png";
+            }
+
+            // Fetch viewing user data
+            const response_2 = await fetch("/me", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+
+
+            if(response_2.ok) {
+                const data_2 = await response_2.json();
+
+
+
+
+           
+               const curr_usn = window.location.pathname.split("/")[2];
+            
+              
+               if(data_2.user.username !== curr_usn) {
+                   console.log("YES");
+                   document.querySelector(".edit-profile-btn").style.display = "none";
+                     document.querySelector(".edit-banner-icon").style.display = "none";
+                     document.querySelector(".edit-pic-icon").style.display = "none";
+
+               }
+                
+
+                if (data_2.user._id.toString() === data._id.toString()) {
+                    let fbox = document.querySelector(".followtoggle-btn");
+                    fbox.style.display = "none";
+                    let edit = document.querySelector(".edit-profile-btn");
+                    edit.style.display = "block";
+                } else if (data.followers.includes(data_2.user._id)) {
+                    let fbox = document.querySelector(".followtoggle-btn");
+                    fbox.classList.add("followingprofile-btn");
+                    fbox.innerText = "Following";
+                } else {
+                    let fbox = document.querySelector(".followtoggle-btn");
+                    fbox.classList.add("followprofile-btn");
+                    fbox.innerText = "Follow";
+                }
+            } else {
+                console.log("Something went wrong");
+            }
+        } else {
+            console.log("Something went wrong");
+        }
+
+     
+        
+    } catch (err) {
+        console.log("Error:", err);
+    }
+});
+
+
+   //load profile with follow for other users
+  document.addEventListener("DOMContentLoaded", async function () {
+    document.querySelector("#ftb").addEventListener("click", async function() {
+        try {
+
+            console.log("clicked");
+
+
+            let usernameElement = document.querySelector(".profile-details");
+            if (usernameElement) {
+                let user_id = usernameElement.getAttribute("uid");
+                const response = await fetch(`/follow/${user_id}`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
+
+                if (response.ok) {
+                    const followbox=document.querySelector(".followtoggle-btn");
+
+                    if(followbox.classList.contains("followprofile-btn"))
+                    {
+                    followbox.innerText = "Following";
+                    followbox.classList.remove("followprofile-btn");
+                    followbox.classList.add("followingprofile-btn");
+                    }
+                    else{
+                          followbox.innerText = "Follow";
+                          followbox.classList.remove("followingprofile-btn");
+                          followbox.classList.add("followprofile-btn");
+                      }
+
+                } else {
+                    console.log("Something went wrong");
+                }    
+
+            } else {
+                console.log("#username element not found");
+            }
+        } catch(err) {
+            console.log("Error:", err);
+        }
+    });
+});
+
+
+
+
+
+
+
+    //load profile's posts default
+    document.addEventListener("DOMContentLoaded", async function () {
+        try {
+            const route = window.location.pathname;
+            const un = route.split("/")[2];
+            
+
+            const resposne = await fetch(`/profile/${un}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+            if(resposne.ok)
+            {
+                const data = await resposne.json();
+               
+                let uid= data._id;
+
+                const response_2= await fetch (`/userposts/${uid}`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
+                if(response_2.ok)
+                {
+                    const data_2 = await response_2.json();
+                   
+                    data_2.forEach( async (element) => {
+                        let tweets = document.querySelector(".tweets");
+                        let tweet = document.createElement("div");
+                        
+                        tweet.classList.add("tweet");
+                        tweet.setAttribute("data-pid", element._id);
+                        let profileImg = document.createElement("img");
+        profileImg.src = element.user.profileImg || "https://cdn-icons-png.flaticon.com/512/149/149071.png"; // Default image if none provided
+        profileImg.classList.add("up");
+        profileImg.alt = "Profile Picture";
+        tweet.appendChild(profileImg);
+
+          let username = document.createElement("span");
+          username.innerText = `@${element.user.username}`;
+          username.classList.add("sp");
+
+          let fullname = document.createElement("span");
+          fullname.classList.add("sp");
+          fullname.innerText = element.user.fullname;
+
+          let text = document.createElement("p");
+          text.innerText = element.text;
+
+          
+        
+
+          let likeButton = document.createElement("button");
+          likeButton.classList.add("like-button");
+          likeButton.innerHTML = `<i class="fa fa-heart"></i> ${element.likes.length}`;
+
+          // Checking whether the current user already liked the post or not
+          const re = await fetch("/me", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+
+          if (re.ok) {
+            const curruser = await re.json();
+
+            if (element.likes.includes(curruser.user._id)) {
+              likeButton.classList.add("liked");
+            }
+          } else {
+            console.log("error");
+          }
+
+          let commentButton = document.createElement("button");
+          commentButton.innerHTML = `<i class="fa fa-comment"></i> ${element.comments.length}`;
+          commentButton.classList.add("comment-button");
+
+
+
+          tweet.appendChild(fullname);
+          tweet.appendChild(username);
+
+
+          if (element.img) {
+                let imgElement = document.createElement("img");
+                imgElement.src = element.img;
+                imgElement.alt = "Tweet image";
+                tweet.appendChild(imgElement);
+            }
+
+          tweet.appendChild(text);
+          tweet.appendChild(likeButton);
+          tweet.appendChild(commentButton);
+          tweets.appendChild(tweet);
+        });
+
+
+         
+        document.querySelector(".tweets").addEventListener("click", function (event) {
+                if (event.target.closest(".like-button")) {
+                    handleLike(event);
+                }
+                if (event.target.closest(".comment-button")) {
+                    showCommentBox(event);
+                }
+            });
+
+                }
+                else
+                {
+                    console.log("Something went wrong");
+                }
+            }
+            else
+            {
+                console.log("Something went wrong");
+            }
+        }
+        catch(err)
+        {
+            console.log(err);
+        }
+    });
+ 
+  //load likes and comments:- 
+  
+async function handleLike(event) {
+  const postElement = event.target.closest(".tweet");
+  const postId = postElement.getAttribute("data-pid");
+  const likeButton = event.target.closest(".like-button");
+  const likeCount = parseInt(likeButton.innerText.trim());
+
+  // Toggle like/unlike and update UI accordingly
+  if (likeButton.classList.contains("liked")) {
+    // Unlike the post
+    likeButton.classList.remove("liked");
+    likeButton.innerHTML = `<i class="fa fa-heart"></i> ${likeCount - 1}`;
+  } else {
+    // Like the post
+    likeButton.classList.add("liked");
+    likeButton.innerHTML = `<i class="fa fa-heart"></i> ${likeCount + 1}`;
+  }
+
+  // Send the toggle like request to the server
+  await sendPostLike(postId);
+}
+
+async function sendPostLike(postId) {
+  const response = await fetch(`/like/${postId}`, {
+    method: "POST", // Assuming POST for toggling like
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    console.log("Toggled like successfully", data);
+  } else {
+    const error = await response.json();
+    console.log("Error toggling like", error);
+  }
+}
+
+
+async function showCommentBox(event) {
+    const postElement = event.target.closest(".tweet");
+
+   
+    
+
+    const arr_info= postElement.querySelectorAll(".sp");
+    const fullname = arr_info[0].innerText;
+    const username = arr_info[1].innerText;
+
+
+    const text = postElement.querySelector("p").innerText;
+    
+    document.getElementById('comment-fullname').innerText = fullname;
+    document.getElementById('comment-username').innerText = username;
+    document.getElementById('comment-text').innerText = text;
+
+    document.getElementById('comment-box').style.display = 'block';
+    document.getElementById('comment-box').setAttribute('data-pid', postElement.getAttribute('data-pid'));
+    
+  }
+  
+
+  function closeCommentBox()
+  {
+    document.getElementById('comment-box').style.display = 'none';
+  }
+  
+
+  async function submitComment() {
+    const commentInput = document.getElementById('comment-input').value;
+    const postId = document.getElementById('comment-box').getAttribute('data-pid');
+
+    if (commentInput.trim() === "") {
+        alert("Comment cannot be empty");
+        return;
+    }
+
+    const response = await fetch(`/comment/${postId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ text: commentInput }),
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        console.log("Comment posted successfully", data);
+
+        // Update the comment count in the tweet
+        const postElement = document.querySelector(`.tweet[data-pid="${postId}"]`);
+        const commentButton = postElement.querySelector('.comment-button');
+        const commentCount = parseInt(commentButton.innerText.trim());
+        commentButton.innerHTML = `<i class="fa fa-comment"></i> ${commentCount + 1}`;
+
+        closeCommentBox();
+        document.getElementById('comment-input').value = '';
+    } else {
+        const error = await response.json();
+        console.log("Error posting comment", error);
+    }
+}
+
+
+
+
+    //load profile's likes tweets
+    document.addEventListener("DOMContentLoaded", async function () {
+        const likesContainer = document.querySelector("#likes");
+        likesContainer.addEventListener("click", async function() {
+        try {
+
+            document.querySelector(".tweets").innerHTML = "";
+
+            
+            const route = window.location.pathname;
+            const un = route.split("/")[2];
+            
+
+            const resposne = await fetch(`/profile/${un}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+            if(resposne.ok)
+            {
+                const data = await resposne.json();
+              
+                let uid= data._id;
+
+                const response_2= await fetch (`/liked/${uid}`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
+                if(response_2.ok)
+                {
+                    const data_2 = await response_2.json();
+                   
+                    data_2.forEach( async (element) => {
+                        let tweets = document.querySelector(".tweets");
+                        let tweet = document.createElement("div");
+                        tweet.classList.add("tweet");
+                        tweet.setAttribute("data-pid", element._id);
+                        let profileImg = document.createElement("img");
+        profileImg.src = element.user.profileImg || "https://cdn-icons-png.flaticon.com/512/149/149071.png"; // Default image if none provided
+        profileImg.classList.add("up");
+        profileImg.alt = "Profile Picture";
+        tweet.appendChild(profileImg);
+
+          let username = document.createElement("span");
+          username.innerText = `@${element.user.username}`;
+          username.classList.add("sp");
+
+          let fullname = document.createElement("span");
+          fullname.classList.add("sp");
+          fullname.innerText = element.user.fullname;
+
+          let text = document.createElement("p");
+          text.innerText = element.text;
+
+          
+        
+
+          let likeButton = document.createElement("button");
+          likeButton.classList.add("like-button");
+          likeButton.innerHTML = `<i class="fa fa-heart"></i> ${element.likes.length}`;
+
+          // Checking whether the current user already liked the post or not
+          const re = await fetch("/me", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+
+          if (re.ok) {
+            const curruser = await re.json();
+
+            if (element.likes.includes(curruser.user._id)) {
+              likeButton.classList.add("liked");
+            }
+          } else {
+            console.log("error");
+          }
+
+          let commentButton = document.createElement("button");
+          commentButton.innerHTML = `<i class="fa fa-comment"></i> ${element.comments.length}`;
+          commentButton.classList.add("comment-button");
+
+
+
+          tweet.appendChild(fullname);
+          tweet.appendChild(username);
+
+
+          if (element.img) {
+                let imgElement = document.createElement("img");
+                imgElement.src = element.img;
+                imgElement.alt = "Tweet image";
+                tweet.appendChild(imgElement);
+            }
+
+          tweet.appendChild(text);
+          tweet.appendChild(likeButton);
+          tweet.appendChild(commentButton);
+          tweets.appendChild(tweet);
+        });
+
+
+         
+        document.querySelector(".tweets").addEventListener("click", function (event) {
+                if (event.target.closest(".like-button")) {
+                    handleLike(event);
+                }
+                if (event.target.closest(".comment-button")) {
+                    showCommentBox(event);
+                }
+            });
+                }
+                else
+                {
+                    console.log("Something went wrong");
+                }
+            }
+            else
+            {
+                console.log("Something went wrong");
+            }
+        }
+        catch(err)
+        {
+            console.log(err);
+        }
+    
+    });
+    });       
+
+
+   //load profile's posts 
+
+   document.addEventListener("DOMContentLoaded", async function () {
+        const postsContainer = document.querySelector("#posts");
+        postsContainer.addEventListener("click", async function() {
+        try {
+
+            document.querySelector(".tweets").innerHTML = "";
+
+            
+            const route = window.location.pathname;
+            const un = route.split("/")[2];
+            
+
+            const resposne = await fetch(`/profile/${un}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+            if(resposne.ok)
+            {
+                const data = await resposne.json();
+                
+                let uid= data._id;
+
+                const response_2= await fetch (`/userposts/${uid}`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
+                if(response_2.ok)
+                {
+                    const data_2 = await response_2.json();
+                    console.log("recieved res 2");
+                    data_2.forEach( async (element) => {
+                        let tweets = document.querySelector(".tweets");
+                        let tweet = document.createElement("div");
+                        tweet.classList.add("tweet");
+                        tweet.setAttribute("data-pid", element._id);
+                    
+          
+        let profileImg = document.createElement("img");
+        profileImg.src = element.user.profileImg || "https://cdn-icons-png.flaticon.com/512/149/149071.png"; // Default image if none provided
+        profileImg.classList.add("up");
+        profileImg.alt = "Profile Picture";
+        tweet.appendChild(profileImg);
+
+          let username = document.createElement("span");
+          username.innerText = `@${element.user.username}`;
+          username.classList.add("sp");
+
+          let fullname = document.createElement("span");
+          fullname.classList.add("sp");
+          fullname.innerText = element.user.fullname;
+
+          let text = document.createElement("p");
+          text.innerText = element.text;
+
+          
+        
+
+          let likeButton = document.createElement("button");
+          likeButton.classList.add("like-button");
+          likeButton.innerHTML = `<i class="fa fa-heart"></i> ${element.likes.length}`;
+
+          // Checking whether the current user already liked the post or not
+          const re = await fetch("/me", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+
+          if (re.ok) {
+            const curruser = await re.json();
+
+            if (element.likes.includes(curruser.user._id)) {
+              likeButton.classList.add("liked");
+            }
+          } else {
+            console.log("error");
+          }
+
+          let commentButton = document.createElement("button");
+          commentButton.innerHTML = `<i class="fa fa-comment"></i> ${element.comments.length}`;
+          commentButton.classList.add("comment-button");
+
+
+
+          tweet.appendChild(fullname);
+          tweet.appendChild(username);
+
+
+          if (element.img) {
+                let imgElement = document.createElement("img");
+                imgElement.src = element.img;
+                imgElement.alt = "Tweet image";
+                tweet.appendChild(imgElement);
+            }
+
+          tweet.appendChild(text);
+          tweet.appendChild(likeButton);
+          tweet.appendChild(commentButton);
+          tweets.appendChild(tweet);
+        });
+
+
+         
+        document.querySelector(".tweets").addEventListener("click", function (event) {
+                if (event.target.closest(".like-button")) {
+                    handleLike(event);
+                }
+                if (event.target.closest(".comment-button")) {
+                    showCommentBox(event);
+                }
+            });
+                }
+                else
+                {
+                    console.log("Something went wrong");
+                }
+            }
+            else
+            {
+                console.log("Something went wrong");
+            }
+        }
+        catch(err)
+        {
+            console.log(err);
+        }
+    
+    });
+    });  
+
+  //follow user
+ 
+
+// VISIT POST 
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".tweets").forEach(function (tweetElement) {
+    tweetElement.addEventListener("click", function (event) {
+
+      if (event.target === tweetElement || event.target.tagName === "P" || event.target.tagName === "IMG"){
+   
+        const postId = event.target.closest(".tweet").getAttribute("data-pid");
+        console.log(postId);
+
+         window.location.href = `/posts/${postId}`;
+      }
+    });
+  });
+});
+
+
+
+
+
+
+
+
+</script>
+</html>

@@ -1,0 +1,344 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .post, .comment {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .sp{
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+
+        .like-button, .comment-button {
+    background: none;
+    border: none;
+    color: #657786;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.like-button .fa-heart, .comment-button .fa-comment {
+    margin-right: 5px;
+}
+
+.like-button .fa-heart {
+    color: white;
+    border: 1px solid #000;
+    border-radius: 50%;
+    padding: 2px;
+}
+
+.like-button.liked .fa-heart {
+    color: #e0245e;
+    background-color: #000;
+}
+
+.like-button:hover .fa-heart {
+    color: #e0245e;
+}
+
+.comment-button .fa-comment {
+    color: #657786;
+}
+
+.comment-button:hover .fa-comment {
+    color: #1da1f2;
+}
+        .comments {
+            margin-left: 10%;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+        .comment {
+            border-top: 1px solid #333;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+        .comment .comment-body {
+            margin-left: 10px;
+        }
+       
+
+        .post img{
+            display: block;
+            width: 60%;
+            height: 40%;
+            margin-bottom: 50px;
+        }
+
+        .comment-box {
+    position: fixed;
+    width:  50vh;
+    height: 30vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: lightseagreen;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.comment-box-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-box-content .close-btn {
+    
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+.comment-box-content .tweet-content {
+    margin-bottom: 10px;
+}
+
+#comment-input {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+#comment-submit {
+    align-self: flex-end;
+}
+
+
+
+.up {
+    border-radius: 50% !important;
+    width: 40px !important;
+    height: 40px !important;
+    margin-right: 15px !important;
+    margin-bottom: 5px !important;
+    vertical-align: middle !important;
+    display: inline !important;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="post" id="post"></div>
+        <div class="comments" id="comments"></div>
+    </div>
+     
+    <div id="comment-box" class="comment-box" style="display: none;">
+        <div class="comment-box-content">
+            <span class="close-btn" onclick="closeCommentBox()">&times;</span>
+            <div class="tweet-content">
+                <span id="comment-fullname"></span>
+                <span id="comment-username"></span>
+                <p id="comment-text"></p>
+            </div>
+            <textarea placeholder="Tweet your reply" id="comment-input"></textarea>
+            <button id="comment-submit" onclick="submitComment()">Tweet</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            const route = window.location.pathname;
+            const postId = route.split("/")[2];
+            console.log(postId);
+            const response = await fetch(`/posts/${postId}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+
+                const postContainer = document.getElementById("post");
+
+                let tweet = document.createElement("div");
+                tweet.classList.add("tweet");
+                tweet.setAttribute("data-pid", data._id);
+                
+
+                let img = document.createElement("img");
+                img.classList.add("up");
+                img.src = data.user.profileImg;
+
+                let fullname = document.createElement("span");
+                fullname.classList.add("sp");
+                fullname.innerText = data.user.fullname;
+
+                let username = document.createElement("span");
+                username.classList.add("sp");
+                username.innerText = `@${data.user.username}`;
+
+                let text = document.createElement("p");
+                text.innerText = data.text;
+
+                let likeButton = document.createElement("button");
+                likeButton.classList.add("like-button");
+                likeButton.innerHTML = `<i class="fa fa-heart"></i> ${data.likes.length}`;
+
+                const re = await fetch("/me", {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
+
+                if (re.ok) {
+                    const curruser = await re.json();
+                    if (data.likes.includes(curruser.user._id)) {
+                        likeButton.classList.add("liked");
+                    }
+                } else {
+                    console.log("error");
+                }
+
+                let commentButton = document.createElement("button");
+                commentButton.innerHTML = `<i class="fa fa-comment"></i> ${data.comments.length}`;
+                commentButton.classList.add("comment-button");
+                tweet.appendChild(img);
+                tweet.appendChild(fullname);
+                tweet.appendChild(username);
+                tweet.appendChild(text);
+                
+                                if (data.img) {
+                                    let imgElement = document.createElement("img");
+                                    imgElement.src = data.img;
+                                    imgElement.alt = "Tweet image";
+                                    tweet.appendChild(imgElement);
+                                }
+                tweet.appendChild(likeButton);
+                tweet.appendChild(commentButton);
+                postContainer.appendChild(tweet);
+
+                const commentsContainer = document.getElementById("comments");
+                data.comments.forEach(comment => {
+                    const commentElement = document.createElement("div");
+                    commentElement.classList.add("comment");
+                    
+
+                    let img = document.createElement("img");
+                img.classList.add("up");
+                img.src = data.user.profileImg;
+
+
+                    let commentFullname = document.createElement("span");
+                    commentFullname.classList.add("sp");
+                    commentFullname.innerText = comment.user.fullname;
+
+                    let commentUsername = document.createElement("span");
+                    commentUsername.classList.add("sp");
+                    commentUsername.innerText = `@${comment.user.username}`;
+
+                    let commentText = document.createElement("p");
+                    commentText.classList.add("comment-body");
+                    commentText.innerText = comment.text;
+                     
+
+                    commentElement.appendChild(img);
+                    commentElement.appendChild(commentFullname);
+                    commentElement.appendChild(commentUsername);
+                    commentElement.appendChild(commentText);
+                    commentsContainer.appendChild(commentElement);
+                });
+
+                document.querySelector(".post").addEventListener("click", function (event) {
+                    if (event.target.closest(".like-button")) {
+                        handleLike(event);
+                    }
+                    if (event.target.closest(".comment-button")) {
+                        showCommentBox(event);
+                    }
+                });
+
+                async function handleLike(event) {
+                    const postElement = event.target.closest(".tweet");
+                    const postId = postElement.getAttribute("data-pid");
+                    const likeButton = event.target.closest(".like-button");
+                    const likeCount = parseInt(likeButton.innerText.trim());
+
+                    if (likeButton.classList.contains("liked")) {
+                        likeButton.classList.remove("liked");
+                        likeButton.innerHTML = `<i class="fa fa-heart"></i> ${likeCount - 1}`;
+                    } else {
+                        likeButton.classList.add("liked");
+                        likeButton.innerHTML = `<i class="fa fa-heart"></i> ${likeCount + 1}`;
+                    }
+
+                    await sendPostLike(postId);
+                }
+
+                async function sendPostLike(postId) {
+                    const response = await fetch(`/like/${postId}`, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        console.log("Toggled like successfully", data);
+                    } else {
+                        const error = await response.json();
+                        console.log("Error toggling like", error);
+                    }
+                }
+
+                async function showCommentBox(event) {
+                    const postElement = event.target.closest(".tweet");
+
+                    const arr_info = postElement.querySelectorAll(".sp");
+                    const fullname = arr_info[0].innerText;
+                    const username = arr_info[1].innerText;
+
+                    const text = postElement.querySelector("p").innerText;
+
+                    document.getElementById('comment-fullname').innerText = fullname;
+                    document.getElementById('comment-username').innerText = username;
+                    document.getElementById('comment-text').innerText = text;
+
+                    document.getElementById('comment-box').style.display = 'block';
+                    document.getElementById('comment-box').setAttribute('data-pid', postElement.getAttribute('data-pid'));
+                }
+
+                function closeCommentBox() {
+                    document.getElementById('comment-box').style.display = 'none';
+                }
+            } else {
+                console.error("Failed to fetch post data.");
+            }
+        });
+    </script>
+</body>
+</html>
